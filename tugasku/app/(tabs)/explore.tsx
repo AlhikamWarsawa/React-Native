@@ -35,7 +35,20 @@ export default function App() {
     };
 
     const addOrUpdateTask = () => {
-        if (judul.trim() === "" && mapel.trim() === "") return ;
+        if (judul.trim() === "" && mapel.trim() === "") {
+            Alert.alert(
+                "Ops",
+                "please input your task",
+            );
+            return;
+
+        }
+
+        if (mapel.trim().length < 3) {
+            Alert.alert("Alex Nigga 69", "Mau Inputkan")
+            return;
+        }
+
         const newTask = {
             id: editingId || Date.now().toString(),
             judul,
@@ -158,7 +171,7 @@ export default function App() {
             )}
 
             <View style={tw`bg-blue-900`}>
-                <Button title={editingId ? 'Update Tugas' : 'Tambah Tugas'} onPress={addOrUpdateTask} color="white"/>
+                <Button title={editingId ? 'Update Tugas' : 'Tambah Tugas'} onPress={addOrUpdateTask} disabled={mapel.trim()===""} color="white"/>
             </View>
 
             <Text style={tw`text-base text-gray-600 my-2`}>
